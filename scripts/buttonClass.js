@@ -11,13 +11,19 @@ class Button {
             this.name = btnSettings.defValue;
         }
         if (btnSettings.type == 'control') {
+            this.desc = btnSettings.desc;
             this.name = btnSettings.name;
         }
         this.type = btnSettings.type;
     }
 
     renderButton() {
-        return `<button class='button ${this.type}'>${this.name}</button>`;
+        if (this.type == 'character') {
+            return `<button class='button ${this.type}'>${this.name}</button>`;
+        }
+        if (this.type == 'control') {
+            return `<button class='button ${this.type} ${this.desc}'>${this.name}</button>`;
+        }
     }
 }
 

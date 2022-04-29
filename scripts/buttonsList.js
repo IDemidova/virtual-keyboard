@@ -87,12 +87,12 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'Backspace',
+        desc: 'backspace',
         name: 'Backspace',
         type: 'control'
     },
     {
-        desc: 'Tab',
+        desc: 'tab',
         name: 'Tab',
         type: 'control'
     },
@@ -201,12 +201,12 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'Delete',
+        desc: 'delete',
         name: 'Delete',
         type: 'control'
     },
     {
-        desc: 'CapsLock',
+        desc: 'capslock',
         name: 'CapsLock',
         type: 'control'
     },
@@ -299,12 +299,12 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'Enter',
+        desc: 'enter',
         name: 'Enter',
         type: 'control'
     },
     {
-        desc: 'ShiftLeft',
+        desc: 'shiftleft',
         name: 'Shift',
         side: 'left',
         type: 'control'
@@ -390,62 +390,62 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'ArrowUp',
+        desc: 'arrowup',
         name: '<i class="fa-solid fa-arrow-up"></i>',
         type: 'control'
     },
     {
-        desc: 'ShiftRight',
+        desc: 'shiftright',
         name: 'Shift',
         side: 'right',
         type: 'control'
     },
     {
-        desc: 'CtrlLeft',
+        desc: 'ctrlleft',
         name: 'Ctrl',
         side: 'left',
         type: 'control'
     },
     {
-        desc: 'Windows',
+        desc: 'windows',
         name: '<i class="fa-brands fa-windows"></i>',
         type: 'control'
     },
     {
-        desc: 'AltLeft',
+        desc: 'altleft',
         name: 'Alt',
         side: 'left',
         type: 'control'
     },
     {
-        desc: 'Space',
+        desc: 'space',
         name: '',
         type: 'control'
     },
     {
-        desc: 'AltRight',
+        desc: 'altright',
         name: 'Alt',
         side: 'rigth',
         type: 'control'
     },
     {
-        desc: 'CtrlRight',
+        desc: 'ctrlright',
         name: 'Ctrl',
         side: 'right',
         type: 'control'
     },
     {
-        desc: 'ArrowLeft',
+        desc: 'arrowleft',
         name: '<i class="fa-solid fa-arrow-left"></i>',
         type: 'control'
     },
     {
-        desc: 'ArrowDown',
+        desc: 'arrowdown',
         name: '<i class="fa-solid fa-arrow-down"></i>',
         type: 'control'
     },
     {
-        desc: 'ArrowRight',
+        desc: 'arrowright',
         name: '<i class="fa-solid fa-arrow-right"></i>',
         type: 'control'
     }

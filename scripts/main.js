@@ -9,14 +9,14 @@ const keyboard = {
     buttonsList: {},
     createButtons() {
         for (let i = 0; i < buttons.length; i++) {
-            let { desc, ...settings } = buttons[i];
-            this.buttonsList[desc] = new Button(settings);
+            let { desc } = buttons[i];
+            this.buttonsList[desc] = new Button(buttons[i]);
         }
     },
     renderButtons() {
         let buttonsMarckup = ``;
-        for (let button in this.buttonsList) {
-            buttonsMarckup += this.buttonsList[button].renderButton();
+        for (let i = 0; i < buttons.length; i++) {
+            buttonsMarckup += this.buttonsList[buttons[i].desc].renderButton();
         }
         return buttonsMarckup;
     },
@@ -25,10 +25,10 @@ const keyboard = {
         let keyboardMarckup = `
         <div class='container'>
             <h1 class='title'>Virtual Keyboard</h1>
-            <textarea class='textarea'></textarea>
-            <div class='keyboard'>${this.renderButtons()}</div>
             <p class='desc'>Клавиатура создана в OS Windows</p>
             <p class='desc'>Комбинация для переключения языка - Left Shift + Alt</p>
+            <textarea class='textarea'></textarea>
+            <div class='keyboard'>${this.renderButtons()}</div>
         </div>`;
         body.insertAdjacentHTML('afterbegin', keyboardMarckup);
     },
