@@ -51,13 +51,14 @@
 
 .button {
     min-width: 50px;
+    line-height: 50px;
     font-weight: bold;
     color: white;
     background-color: #B2B2B2;
     border: none;
     border-radius: 5px;
     outline: none;
-    padding: 12px;
+    padding: 0 12px;
     margin: 5px;
     cursor: pointer;
     transition: 0.5s;
@@ -73,12 +74,12 @@ i {
 
 .shiftleft,
 .shiftright {
-    padding: 12px 25px;
+    padding: 0 25px;
 }
 
 .ctrlleft,
 .ctrlright {
-    padding: 12px 25px;
+    padding: 0 25px;
 }
 
 .space {
@@ -87,4 +88,5 @@ i {
 
 .pressed {
     background-color: #727272;
+    transform: scale(0.9);
 }
