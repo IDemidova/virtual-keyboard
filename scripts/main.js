@@ -4,10 +4,14 @@ import { buttons } from './buttonsList.js';
 import { Button } from './buttonClass.js';
 
 const keyboard = {
-    commandButtons: 'shift, caps lock',
-    activeCommandButton: '',
+    buttonsUsed: [],
     buttonsList: {},
-    createButtons() {
+    defineButtonsUsed() {
+        for (let i = 0; i < buttons.length; i++) {
+            this.buttonsUsed.push(buttons[i].keyCode);
+        }
+    },
+    fillButtonsList() {
         for (let i = 0; i < buttons.length; i++) {
             let { desc } = buttons[i];
             this.buttonsList[desc] = new Button(buttons[i]);
@@ -32,15 +36,41 @@ const keyboard = {
         </div>`;
         body.insertAdjacentHTML('afterbegin', keyboardMarckup);
     },
-    addEventListeners() {
-        //window
-    },
     init() {
-        this.createButtons();
+        this.defineButtonsUsed();
+        this.fillButtonsList();
         this.renderkeyboard();
-        //this.addEventListeners();
     }
 };
 
 keyboard.init();
-console.log(keyboard)
+
+function defineButton(event) {
+    let buttonSelector;
+    if (event.keyCode == '16' || event.keyCode == '17' || event.keyCode == '18') {
+        if (event.location == 1) {
+            buttonSelector = `button[keyCode='${event.keyCode}'][side='left']`;
+        }
+        if (event.location == 2) {
+            buttonSelector = `button[keyCode='${event.keyCode}'][side='right']`;
+        }
+    } else {
+        buttonSelector = `button[keyCode='${event.keyCode}']`;
+    }
+    let button = document.querySelector(buttonSelector);
+    return button;
+}
+
+window.addEventListener('keydown', (event) => {
+    if (keyboard.buttonsUsed.includes(event.keyCode)) {
+        let button = defineButton(event);
+        button.classList.add('pressed');
+    }
+});
+
+window.addEventListener('keyup', (event) => {
+    if (keyboard.buttonsUsed.includes(event.keyCode)) {
+        let button = defineButton(event);
+        button.classList.remove('pressed');
+    }
+});

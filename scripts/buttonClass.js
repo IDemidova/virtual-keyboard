@@ -14,15 +14,23 @@ class Button {
             this.desc = btnSettings.desc;
             this.name = btnSettings.name;
         }
+        if (btnSettings.side) {
+            this.side = btnSettings.side;
+        }
+        this.keyCode = btnSettings.keyCode;
         this.type = btnSettings.type;
     }
 
     renderButton() {
         if (this.type == 'character') {
-            return `<button class='button ${this.type}'>${this.name}</button>`;
+            return `<button class='button ${this.type}' keyCode='${this.keyCode}'>${this.name}</button>`;
         }
         if (this.type == 'control') {
-            return `<button class='button ${this.type} ${this.desc}'>${this.name}</button>`;
+            if (this.side) {
+                return `<button class='button ${this.type} ${this.desc}' keyCode='${this.keyCode}' side='${this.side}'>${this.name}</button>`;
+            } else {
+                return `<button class='button ${this.type} ${this.desc}' keyCode='${this.keyCode}'>${this.name}</button>`;
+            }
         }
     }
 }
