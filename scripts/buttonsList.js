@@ -2,8 +2,8 @@
 
 const buttons = [
     {
-        desc: 'ё',
-        keyCode: 192,
+        keyCode: '192',
+        desc: '192',
         defValue: 'ё',
         altValue: '`',
         defValueUp: 'Ё',
@@ -11,109 +11,128 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: '1',
-        keyCode: 49,
+        keyCode: '49',
+        desc: '49',
         defValue: '1',
+        altValue: '1',
         defValueUp: '!',
+        altValueUp: '!',
         type: 'character'
     },
     {
-        desc: '2',
-        keyCode: 50,
+        keyCode: '50',
+        desc: '50',
         defValue: '2',
-        altValue: '@',
+        altValue: '2',
         defValueUp: '"',
+        altValueUp: '@',
         type: 'character'
     },
     {
-        desc: '3',
-        keyCode: 51,
+        keyCode: '51',
+        desc: '51',
         defValue: '3',
-        altValue: '#',
+        altValue: '3',
         defValueUp: '№',
+        altValueUp: '#',
         type: 'character'
     },
     {
-        desc: '4',
-        keyCode: 52,
+        keyCode: '52',
+        desc: '52',
         defValue: '4',
-        altValue: '$',
+        altValue: '4',
         defValueUp: ';',
+        altValueUp: '$',
         type: 'character'
     },
     {
-        desc: '5',
-        keyCode: 53,
+        keyCode: '53',
+        desc: '53',
         defValue: '5',
-        altValue: '%',
+        altValue: '5',
+        defValueUp: '%',
+        altValueUp: '%',
         type: 'character'
     },
     {
-        desc: '6',
-        keyCode: 54,
+        keyCode: '54',
+        desc: '54',
         defValue: '6',
-        altValue: '^',
+        altValue: '6',
         defValueUp: ':',
+        altValueUp: '^',
         type: 'character'
     },
     {
-        desc: '7',
-        keyCode: 55,
+        keyCode: '55',
+        desc: '55',
         defValue: '7',
-        altValue: '&',
+        altValue: '7',
         defValueUp: '?',
+        altValueUp: '&',
         type: 'character'
     },
     {
-        desc: '8',
-        keyCode: 56,
+        keyCode: '56',
+        desc: '56',
         defValue: '8',
-        altValue: '*',
+        altValue: '8',
+        defValueUp: '*',
+        altValueUp: '*',
         type: 'character'
     },
     {
-        desc: '9',
-        keyCode: 57,
+        keyCode: '57',
+        desc: '57',
         defValue: '9',
-        altValue: '(',
+        altValue: '9',
+        defValueUp: '(',
+        altValueUp: '(',
         type: 'character'
     },
     {
-        desc: '0',
-        keyCode: 48,
+        keyCode: '48',
+        desc: '48',
         defValue: '0',
-        altValue: ')',
+        altValue: '0',
+        defValueUp: ')',
+        altValueUp: ')',
         type: 'character'
     },
     {
-        desc: '-',
-        keyCode: 189,
+        keyCode: '189',
+        desc: '189',
         defValue: '-',
-        altValue: '_',
+        altValue: '-',
+        defValueUp: '_',
+        altValueUp: '_',
         type: 'character'
     },
     {
-        desc: '=',
-        keyCode: 187,
+        keyCode: '187',
+        desc: '187',
         defValue: '=',
-        altValue: '+',
+        altValue: '=',
+        defValueUp: '+',
+        altValueUp: '+',
         type: 'character'
     },
     {
+        keyCode: '8',
         desc: 'backspace',
-        keyCode: 8,
-        name: 'Backspace',
+        value: 'Backspace',
         type: 'control'
     },
     {
+        keyCode: '9',
         desc: 'tab',
-        keyCode: 9,
-        name: 'Tab',
+        value: 'Tab',
         type: 'control'
     },
     {
-        desc: 'й',
-        keyCode: 81,
+        keyCode: '81',
+        desc: '81',
         defValue: 'й',
         altValue: 'q',
         defValueUp: 'Й',
@@ -121,8 +140,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'ц',
-        keyCode: 87,
+        keyCode: '87',
+        desc: '87',
         defValue: 'ц',
         altValue: 'w',
         defValueUp: 'Ц',
@@ -130,8 +149,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'у',
-        keyCode: 69,
+        keyCode: '69',
+        desc: '69',
         defValue: 'у',
         altValue: 'e',
         defValueUp: 'У',
@@ -139,8 +158,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'к',
-        keyCode: 82,
+        keyCode: '82',
+        desc: '82',
         defValue: 'к',
         altValue: 'r',
         defValueUp: 'К',
@@ -148,8 +167,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'е',
-        keyCode: 84,
+        keyCode: '84',
+        desc: '84',
         defValue: 'е',
         altValue: 't',
         defValueUp: 'Е',
@@ -157,8 +176,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'н',
-        keyCode: 89,
+        keyCode: '89',
+        desc: '89',
         defValue: 'н',
         altValue: 'y',
         defValueUp: 'Н',
@@ -166,8 +185,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'г',
-        keyCode: 85,
+        keyCode: '85',
+        desc: '85',
         defValue: 'г',
         altValue: 'u',
         defValueUp: 'Г',
@@ -175,8 +194,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'ш',
-        keyCode: 73,
+        keyCode: '73',
+        desc: '73',
         defValue: 'ш',
         altValue: 'i',
         defValueUp: 'Ш',
@@ -184,8 +203,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'щ',
-        keyCode: 79,
+        keyCode: '79',
+        desc: '79',
         defValue: 'щ',
         altValue: 'o',
         defValueUp: 'Щ',
@@ -193,8 +212,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'з',
-        keyCode: 80,
+        keyCode: '80',
+        desc: '80',
         defValue: 'з',
         altValue: 'p',
         defValueUp: 'З',
@@ -202,8 +221,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'х',
-        keyCode: 219,
+        keyCode: '219',
+        desc: '219',
         defValue: 'х',
         altValue: '[',
         defValueUp: 'Х',
@@ -211,8 +230,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'ъ',
-        keyCode: 221,
+        keyCode: '221',
+        desc: '221',
         defValue: 'ъ',
         altValue: ']',
         defValueUp: 'Ъ',
@@ -220,8 +239,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: '\\',
-        keyCode: 220,
+        keyCode: '220',
+        desc: '220',
         defValue: '\\',
         altValue: '\\',
         defValueUp: '/',
@@ -229,20 +248,20 @@ const buttons = [
         type: 'character'
     },
     {
+        keyCode: '46',
         desc: 'delete',
-        keyCode: 46,
-        name: 'Delete',
+        value: 'Delete',
         type: 'control'
     },
     {
+        keyCode: '20',
         desc: 'capslock',
-        keyCode: 20,
-        name: 'CapsLock',
+        value: 'CapsLock',
         type: 'control'
     },
     {
-        desc: 'ф',
-        keyCode: 65,
+        keyCode: '65',
+        desc: '65',
         defValue: 'ф',
         altValue: 'a',
         defValueUp: 'Ф',
@@ -250,8 +269,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'ы',
-        keyCode: 83,
+        keyCode: '83',
+        desc: '83',
         defValue: 'ы',
         altValue: 's',
         defValueUp: 'Ы',
@@ -259,8 +278,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'в',
-        keyCode: 68,
+        keyCode: '68',
+        desc: '68',
         defValue: 'в',
         altValue: 'd',
         defValueUp: 'В',
@@ -268,8 +287,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'а',
-        keyCode: 70,
+        keyCode: '70',
+        desc: '70',
         defValue: 'а',
         altValue: 'f',
         defValueUp: 'А',
@@ -277,8 +296,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'п',
-        keyCode: 71,
+        keyCode: '71',
+        desc: '71',
         defValue: 'п',
         altValue: 'g',
         defValueUp: 'П',
@@ -286,8 +305,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'р',
-        keyCode: 72,
+        keyCode: '72',
+        desc: '72',
         defValue: 'р',
         altValue: 'h',
         defValueUp: 'Р',
@@ -295,8 +314,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'о',
-        keyCode: 74,
+        keyCode: '74',
+        desc: '74',
         defValue: 'о',
         altValue: 'j',
         defValueUp: 'О',
@@ -304,8 +323,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'л',
-        keyCode: 75,
+        keyCode: '75',
+        desc: '75',
         defValue: 'л',
         altValue: 'k',
         defValueUp: 'Л',
@@ -313,8 +332,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'д',
-        keyCode: 76,
+        keyCode: '76',
+        desc: '76',
         defValue: 'д',
         altValue: 'l',
         defValueUp: 'Д',
@@ -322,8 +341,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'ж',
-        keyCode: 186,
+        keyCode: '186',
+        desc: '186',
         defValue: 'ж',
         altValue: ';',
         defValueUp: 'Ж',
@@ -331,8 +350,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'э',
-        keyCode: 222,
+        keyCode: '222',
+        desc: '222',
         defValue: 'э',
         altValue: "'",
         defValueUp: 'Э',
@@ -340,21 +359,21 @@ const buttons = [
         type: 'character'
     },
     {
+        keyCode: '13',
         desc: 'enter',
-        keyCode: 13,
-        name: 'Enter',
+        value: 'Enter',
         type: 'control'
     },
     {
+        keyCode: '16',
         desc: 'shiftleft',
-        keyCode: 16,
-        name: 'Shift',
+        value: 'Shift',
         side: 'left',
         type: 'control'
     },
     {
-        desc: 'я',
-        keyCode: 90,
+        keyCode: '90',
+        desc: '90',
         defValue: 'я',
         altValue: 'z',
         defValueUp: 'Я',
@@ -362,8 +381,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'ч',
-        keyCode: 88,
+        keyCode: '88',
+        desc: '88',
         defValue: 'ч',
         altValue: 'x',
         defValueUp: 'Ч',
@@ -371,8 +390,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'с',
-        keyCode: 67,
+        keyCode: '67',
+        desc: '67',
         defValue: 'с',
         altValue: 'c',
         defValueUp: 'С',
@@ -380,8 +399,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'м',
-        keyCode: 86,
+        keyCode: '86',
+        desc: '86',
         defValue: 'м',
         altValue: 'v',
         defValueUp: 'М',
@@ -389,8 +408,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'и',
-        keyCode: 66,
+        keyCode: '66',
+        desc: '66',
         defValue: 'и',
         altValue: 'b',
         defValueUp: 'И',
@@ -398,8 +417,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'т',
-        keyCode: 78,
+        keyCode: '78',
+        desc: '78',
         defValue: 'т',
         altValue: 'n',
         defValueUp: 'Т',
@@ -407,8 +426,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'ь',
-        keyCode: 77,
+        keyCode: '77',
+        desc: '77',
         defValue: 'ь',
         altValue: 'm',
         defValueUp: 'Ь',
@@ -416,8 +435,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'б',
-        keyCode: 188,
+        keyCode: '188',
+        desc: '188',
         defValue: 'б',
         altValue: ',',
         defValueUp: 'Б',
@@ -425,8 +444,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: 'ю',
-        keyCode: 190,
+        keyCode: '190',
+        desc: '190',
         defValue: 'ю',
         altValue: '.',
         defValueUp: 'Ю',
@@ -434,8 +453,8 @@ const buttons = [
         type: 'character'
     },
     {
-        desc: '.',
-        keyCode: 191,
+        keyCode: '191',
+        desc: '191',
         defValue: '.',
         altValue: '/',
         defValueUp: ',',
@@ -443,74 +462,74 @@ const buttons = [
         type: 'character'
     },
     {
+        keyCode: '38',
         desc: 'arrowup',
-        keyCode: 38,
-        name: '<i class="fa-solid fa-arrow-up"></i>',
+        value: '<i class="fa-solid fa-arrow-up"></i>',
         type: 'control'
     },
     {
+        keyCode: '16',
         desc: 'shiftright',
-        keyCode: 16,
-        name: 'Shift',
+        value: 'Shift',
         side: 'right',
         type: 'control'
     },
     {
+        keyCode: '17',
         desc: 'ctrlleft',
-        keyCode: 17,
-        name: 'Ctrl',
+        value: 'Ctrl',
         side: 'left',
         type: 'control'
     },
     {
+        keyCode: '91',
         desc: 'windows',
-        keyCode: 91,
-        name: '<i class="fa-brands fa-windows"></i>',
+        value: '<i class="fa-brands fa-windows"></i>',
         type: 'control'
     },
     {
+        keyCode: '18',
         desc: 'altleft',
-        keyCode: 18,
-        name: 'Alt',
+        value: 'Alt',
         side: 'left',
         type: 'control'
     },
     {
+        keyCode: '32',
         desc: 'space',
-        keyCode: 32,
-        name: '',
+        value: '',
         type: 'control'
     },
     {
+        keyCode: '18',
         desc: 'altright',
-        keyCode: 18,
-        name: 'Alt',
+        value: 'Alt',
         side: 'right',
         type: 'control'
     },
     {
+        keyCode: '17',
         desc: 'ctrlright',
-        keyCode: 17,
-        name: 'Ctrl',
+        value: 'Ctrl',
         side: 'right',
         type: 'control'
     },
     {
+        keyCode: '37',
         desc: 'arrowleft',
-        keyCode: 37,
-        name: '<i class="fa-solid fa-arrow-left"></i>',
+        value: '<i class="fa-solid fa-arrow-left"></i>',
         type: 'control'
     },
     {
+        keyCode: '40',
         desc: 'arrowdown',
-        keyCode: 40,
-        name: '<i class="fa-solid fa-arrow-down"></i>',
+        value: '<i class="fa-solid fa-arrow-down"></i>',
         type: 'control'
     },
     {
+        keyCode: '39',
         desc: 'arrowright',
-        keyCode: 39,
-        name: '<i class="fa-solid fa-arrow-right"></i>',
+        value: '<i class="fa-solid fa-arrow-right"></i>',
         type: 'control'
     }
 ];

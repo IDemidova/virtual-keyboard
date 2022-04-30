@@ -3,33 +3,31 @@
 class Button {
     constructor(btnSettings) {
         if (btnSettings.type == 'character') {
-            btnSettings = Object.assign({ altValue: btnSettings.defValue, altValueUp: btnSettings.defValueUp }, btnSettings);
             this.defValue = btnSettings.defValue;
             this.altValue = btnSettings.altValue;
             this.defValueUp = btnSettings.defValueUp;
             this.altValueUp = btnSettings.altValueUp;
-            this.name = btnSettings.defValue;
         }
         if (btnSettings.type == 'control') {
-            this.desc = btnSettings.desc;
-            this.name = btnSettings.name;
-        }
-        if (btnSettings.side) {
-            this.side = btnSettings.side;
+            this.value = btnSettings.value;
+            if (btnSettings.side) {
+                this.side = btnSettings.side;
+            }
         }
         this.keyCode = btnSettings.keyCode;
+        this.desc = btnSettings.desc;
         this.type = btnSettings.type;
     }
 
     renderButton() {
         if (this.type == 'character') {
-            return `<button class='button ${this.type}' keyCode='${this.keyCode}'>${this.name}</button>`;
+            return `<button class='button ${this.type}' keycode='${this.keyCode}'>${this.defValue}</button>`;
         }
         if (this.type == 'control') {
             if (this.side) {
-                return `<button class='button ${this.type} ${this.desc}' keyCode='${this.keyCode}' side='${this.side}'>${this.name}</button>`;
+                return `<button class='button ${this.type} ${this.desc}' keycode='${this.keyCode}' side='${this.side}'>${this.value}</button>`;
             } else {
-                return `<button class='button ${this.type} ${this.desc}' keyCode='${this.keyCode}'>${this.name}</button>`;
+                return `<button class='button ${this.type} ${this.desc}' keycode='${this.keyCode}'>${this.value}</button>`;
             }
         }
     }

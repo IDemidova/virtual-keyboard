@@ -4,6 +4,7 @@ import { buttons } from './buttonsList.js';
 import { Button } from './buttonClass.js';
 
 const keyboard = {
+    currentLang: 'RU',
     buttonsUsed: [],
     buttonsList: {},
     defineButtonsUsed() {
@@ -13,8 +14,7 @@ const keyboard = {
     },
     fillButtonsList() {
         for (let i = 0; i < buttons.length; i++) {
-            let { desc } = buttons[i];
-            this.buttonsList[desc] = new Button(buttons[i]);
+            this.buttonsList[buttons[i].desc] = new Button(buttons[i]);
         }
     },
     renderButtons() {
@@ -24,7 +24,7 @@ const keyboard = {
         }
         return buttonsMarckup;
     },
-    renderkeyboard() {
+    renderKeyboard() {
         let body = document.body;
         let keyboardMarckup = `
         <div class='container'>
@@ -39,7 +39,7 @@ const keyboard = {
     init() {
         this.defineButtonsUsed();
         this.fillButtonsList();
-        this.renderkeyboard();
+        this.renderKeyboard();
     }
 };
 

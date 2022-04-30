@@ -6,30 +6,63 @@ keyboard.init();
 
 function defineButton(event) {
     let buttonSelector;
-    if (event.keyCode == '16' || event.keyCode == '17' || event.keyCode == '18') {
+    let keyCode = String(event.keyCode);
+    if (keyCode == '16' || keyCode == '17' || keyCode == '18') {
         if (event.location == 1) {
-            buttonSelector = `button[keyCode='${event.keyCode}'][side='left']`;
+            buttonSelector = `button[keyCode='${keyCode}'][side='left']`;
         }
         if (event.location == 2) {
-            buttonSelector = `button[keyCode='${event.keyCode}'][side='right']`;
+            buttonSelector = `button[keyCode='${keyCode}'][side='right']`;
         }
     } else {
-        buttonSelector = `button[keyCode='${event.keyCode}']`;
+        buttonSelector = `button[keyCode='${keyCode}']`;
     }
     let button = document.querySelector(buttonSelector);
     return button;
 }
 
 window.addEventListener('keydown', (event) => {
-    if (keyboard.buttonsUsed.includes(event.keyCode)) {
+    let keyCode = String(event.keyCode);
+    if (keyboard.buttonsUsed.includes(keyCode)) {
         let button = defineButton(event);
+        if (button.getAttribute('keycode') == '16') {
+            let characterButtons = document.querySelectorAll('.character');
+            if (keyboard.currentLang == 'RU') {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].defValueUp;
+                });
+            }
+            if (keyboard.currentLang == 'EN') {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].altValueUp;
+                });
+            }
+        }
         button.classList.add('pressed');
     }
 });
 
 window.addEventListener('keyup', (event) => {
-    if (keyboard.buttonsUsed.includes(event.keyCode)) {
+    let keyCode = String(event.keyCode);
+    if (keyboard.buttonsUsed.includes(keyCode)) {
         let button = defineButton(event);
+        if (button.getAttribute('keycode') == '16') {
+            let characterButtons = document.querySelectorAll('.character');
+            if (keyboard.currentLang == 'RU') {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].defValue;
+                });
+            }
+            if (keyboard.currentLang == 'EN') {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].altValue;
+                });
+            }
+        }
         button.classList.remove('pressed');
     }
 });
