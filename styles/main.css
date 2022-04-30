@@ -29,7 +29,8 @@
 .textarea {
     width: 100%;
     height: 300px;
-    border: 2px solid #B2B2B2;
+    outline: none;
+    border: 3px solid #B2B2B2;
     border-radius: 20px;
     resize: none;
     padding: 20px;
@@ -38,7 +39,7 @@
 }
 
 .textarea:focus-visible {
-    border: 2px solid #545454;
+    border: 3px solid #727272;
 }
 
 .keyboard {
@@ -63,7 +64,7 @@
 }
 
 .button:hover {
-    background-color: #545454;
+    background-color: #727272;
 }
 
 i {
@@ -82,4 +83,8 @@ i {
 
 .space {
     width: 220px;
+}
+
+.pressed {
+    background-color: salmon;
 }
