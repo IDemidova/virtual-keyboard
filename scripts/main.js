@@ -25,6 +25,26 @@ window.addEventListener('keydown', (event) => {
     let keyCode = String(event.keyCode);
     if (keyboard.buttonsUsed.includes(keyCode)) {
         let button = defineButton(event);
+        if (button.getAttribute('keycode') == '20') {
+            if (!button.hasAttribute('active')) {
+                button.setAttribute('active', '');
+            } else {
+                button.removeAttribute('active', '');
+            }
+            let characterButtons = document.querySelectorAll('.character');
+            if (keyboard.currentLang == 'RU') {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].defValueUp;
+                });
+            }
+            if (keyboard.currentLang == 'EN') {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].altValueUp;
+                });
+            }
+        }
         if (button.getAttribute('keycode') == '16') {
             let characterButtons = document.querySelectorAll('.character');
             if (keyboard.currentLang == 'RU') {
@@ -48,21 +68,40 @@ window.addEventListener('keyup', (event) => {
     let keyCode = String(event.keyCode);
     if (keyboard.buttonsUsed.includes(keyCode)) {
         let button = defineButton(event);
-        if (button.getAttribute('keycode') == '16') {
-            let characterButtons = document.querySelectorAll('.character');
-            if (keyboard.currentLang == 'RU') {
-                characterButtons.forEach(characterButton => {
-                    let keyCode = characterButton.getAttribute('keycode');
-                    characterButton.textContent = keyboard.buttonsList[keyCode].defValue;
-                });
+        if (button.getAttribute('keycode') == '20') {
+            if (!button.hasAttribute('active')) {
+                let characterButtons = document.querySelectorAll('.character');
+                if (keyboard.currentLang == 'RU') {
+                    characterButtons.forEach(characterButton => {
+                        let keyCode = characterButton.getAttribute('keycode');
+                        characterButton.textContent = keyboard.buttonsList[keyCode].defValue;
+                    });
+                }
+                if (keyboard.currentLang == 'EN') {
+                    characterButtons.forEach(characterButton => {
+                        let keyCode = characterButton.getAttribute('keycode');
+                        characterButton.textContent = keyboard.buttonsList[keyCode].altValue;
+                    });
+                }
+                button.classList.remove('pressed');
             }
-            if (keyboard.currentLang == 'EN') {
-                characterButtons.forEach(characterButton => {
-                    let keyCode = characterButton.getAttribute('keycode');
-                    characterButton.textContent = keyboard.buttonsList[keyCode].altValue;
-                });
+        } else {
+            if (button.getAttribute('keycode') == '16') {
+                let characterButtons = document.querySelectorAll('.character');
+                if (keyboard.currentLang == 'RU') {
+                    characterButtons.forEach(characterButton => {
+                        let keyCode = characterButton.getAttribute('keycode');
+                        characterButton.textContent = keyboard.buttonsList[keyCode].defValue;
+                    });
+                }
+                if (keyboard.currentLang == 'EN') {
+                    characterButtons.forEach(characterButton => {
+                        let keyCode = characterButton.getAttribute('keycode');
+                        characterButton.textContent = keyboard.buttonsList[keyCode].altValue;
+                    });
+                }
             }
+            button.classList.remove('pressed');
         }
-        button.classList.remove('pressed');
     }
 });
