@@ -61,20 +61,34 @@ function defineChangeLanguageNeed(pressedButtons) {
 }
 
 function changeLanguage() {
+    let characterButtons = document.querySelectorAll('.character');
+    let capsLock = document.querySelector('.capslock');
     if (keyboard.currentLang == 'RU') {
         keyboard.currentLang = 'EN';
-        let characterButtons = document.querySelectorAll('.character');
-        characterButtons.forEach(characterButton => {
-            let keyCode = characterButton.getAttribute('keycode');
-            characterButton.textContent = keyboard.buttonsList[keyCode].altValue;
-        });
+        if (!capsLock.hasAttribute('active')) {
+            characterButtons.forEach(characterButton => {
+                let keyCode = characterButton.getAttribute('keycode');
+                characterButton.textContent = keyboard.buttonsList[keyCode].altValue;
+            });
+        } else if (capsLock.hasAttribute('active')) {
+            characterButtons.forEach(characterButton => {
+                let keyCode = characterButton.getAttribute('keycode');
+                characterButton.textContent = keyboard.buttonsList[keyCode].altValueUp;
+            });
+        }
     } else if (keyboard.currentLang == 'EN') {
         keyboard.currentLang = 'RU';
-        let characterButtons = document.querySelectorAll('.character');
-        characterButtons.forEach(characterButton => {
-            let keyCode = characterButton.getAttribute('keycode');
-            characterButton.textContent = keyboard.buttonsList[keyCode].defValue;
-        });
+        if (!capsLock.hasAttribute('active')) {
+            characterButtons.forEach(characterButton => {
+                let keyCode = characterButton.getAttribute('keycode');
+                characterButton.textContent = keyboard.buttonsList[keyCode].defValue;
+            });
+        } else if (capsLock.hasAttribute('active')) {
+            characterButtons.forEach(characterButton => {
+                let keyCode = characterButton.getAttribute('keycode');
+                characterButton.textContent = keyboard.buttonsList[keyCode].defValueUp;
+            });
+        }
     }
 }
 
