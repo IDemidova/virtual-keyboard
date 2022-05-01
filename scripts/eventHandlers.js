@@ -51,4 +51,37 @@ function changeCharactersToLowercase() {
     }
 }
 
-export { defineButton, changeCharactersToUppercase, changeCharactersToLowercase };
+function defineChangeLanguageNeed(pressedButtons) {
+    if (pressedButtons.length == 2) {
+        if (pressedButtons.some(pressedButton => pressedButton.classList.contains('shiftleft')) && pressedButtons.some(pressedButton => pressedButton.classList.contains('altleft'))) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function changeLanguage() {
+    if (keyboard.currentLang == 'RU') {
+        keyboard.currentLang = 'EN';
+        let characterButtons = document.querySelectorAll('.character');
+        characterButtons.forEach(characterButton => {
+            let keyCode = characterButton.getAttribute('keycode');
+            characterButton.textContent = keyboard.buttonsList[keyCode].altValue;
+        });
+    } else if (keyboard.currentLang == 'EN') {
+        keyboard.currentLang = 'RU';
+        let characterButtons = document.querySelectorAll('.character');
+        characterButtons.forEach(characterButton => {
+            let keyCode = characterButton.getAttribute('keycode');
+            characterButton.textContent = keyboard.buttonsList[keyCode].defValue;
+        });
+    }
+}
+
+export {
+    defineButton,
+    changeCharactersToUppercase,
+    changeCharactersToLowercase,
+    defineChangeLanguageNeed,
+    changeLanguage
+};
