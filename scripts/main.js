@@ -39,6 +39,10 @@ window.addEventListener('keydown', (event) => {
             pressedButtons.push(button);
         }
 
+        if (button.getAttribute('keycode') == '9') {
+            event.preventDefault();
+        }
+
         focusOnTextarea();
     }
 });
