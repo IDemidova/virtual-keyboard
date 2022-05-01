@@ -1,8 +1,13 @@
 'use strict';
 
 class Button {
-    constructor(btnSettings) {
+    constructor(btnSettings, currentLang) {
         if (btnSettings.type == 'character') {
+            if (currentLang == 'RUS') {
+                this.curValue = btnSettings.defRus;
+            } else {
+                this.curValue = btnSettings.defEng;
+            }
             this.defRus = btnSettings.defRus;
             this.defRusUp = btnSettings.defRusUp;
             this.altRus = btnSettings.altRus;
@@ -23,7 +28,7 @@ class Button {
 
     renderButton() {
         if (this.type == 'character') {
-            return `<button class='button ${this.type}' keycode='${this.keyCode}'>${this.defRus}</button>`;
+            return `<button class='button ${this.type}' keycode='${this.keyCode}'>${this.curValue}</button>`;
         }
         if (this.type == 'control') {
             if (this.side) {

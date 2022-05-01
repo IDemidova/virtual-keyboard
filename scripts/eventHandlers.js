@@ -135,6 +135,7 @@ function changeLanguage() {
             });
         }
     }
+    keyboard.localStorage.setItem('lang', keyboard.currentLang);
 }
 
 export {

@@ -7,6 +7,14 @@ const keyboard = {
     currentLang: 'RUS',
     buttonsUsed: [],
     buttonsList: {},
+    localStorage: window.localStorage,
+    applyLanguage() {
+        if (!this.localStorage.getItem('lang')) {
+            this.localStorage.setItem('lang', this.currentLang);
+        } else {
+            this.currentLang = this.localStorage.getItem('lang');
+        }
+    },
     defineButtonsUsed() {
         for (let i = 0; i < buttons.length; i++) {
             this.buttonsUsed.push(buttons[i].keyCode);
@@ -14,7 +22,7 @@ const keyboard = {
     },
     fillButtonsList() {
         for (let i = 0; i < buttons.length; i++) {
-            this.buttonsList[buttons[i].desc] = new Button(buttons[i]);
+            this.buttonsList[buttons[i].desc] = new Button(buttons[i], this.currentLang);
         }
     },
     renderButtons() {
@@ -37,6 +45,7 @@ const keyboard = {
         body.insertAdjacentHTML('afterbegin', keyboardMarckup);
     },
     init() {
+        this.applyLanguage();
         this.defineButtonsUsed();
         this.fillButtonsList();
         this.renderKeyboard();
