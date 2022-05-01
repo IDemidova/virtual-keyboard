@@ -60,6 +60,10 @@ window.addEventListener('keyup', (event) => {
             button.classList.remove('pressed');
         }
 
+        if (button.getAttribute('keycode') == '18') {
+            event.preventDefault();
+        }
+
         if (defineChangeLanguageNeed(pressedButtons)) {
             changeLanguage();
         }
