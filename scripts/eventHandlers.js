@@ -21,33 +21,78 @@ function defineButton(event) {
 
 function changeCharactersToUppercase() {
     let characterButtons = document.querySelectorAll('.character');
-    if (keyboard.currentLang == 'RU') {
+    if (keyboard.currentLang == 'RUS') {
         characterButtons.forEach(characterButton => {
             let keyCode = characterButton.getAttribute('keycode');
-            characterButton.textContent = keyboard.buttonsList[keyCode].defValueUp;
+            characterButton.textContent = keyboard.buttonsList[keyCode].defRusUp;
         });
     }
-    if (keyboard.currentLang == 'EN') {
+    if (keyboard.currentLang == 'ENG') {
         characterButtons.forEach(characterButton => {
             let keyCode = characterButton.getAttribute('keycode');
-            characterButton.textContent = keyboard.buttonsList[keyCode].altValueUp;
+            characterButton.textContent = keyboard.buttonsList[keyCode].defEngUp;
         });
     }
 }
 
 function changeCharactersToLowercase() {
     let characterButtons = document.querySelectorAll('.character');
-    if (keyboard.currentLang == 'RU') {
+    if (keyboard.currentLang == 'RUS') {
         characterButtons.forEach(characterButton => {
             let keyCode = characterButton.getAttribute('keycode');
-            characterButton.textContent = keyboard.buttonsList[keyCode].defValue;
+            characterButton.textContent = keyboard.buttonsList[keyCode].defRus;
         });
     }
-    if (keyboard.currentLang == 'EN') {
+    if (keyboard.currentLang == 'ENG') {
         characterButtons.forEach(characterButton => {
             let keyCode = characterButton.getAttribute('keycode');
-            characterButton.textContent = keyboard.buttonsList[keyCode].altValue;
+            characterButton.textContent = keyboard.buttonsList[keyCode].defEng;
         });
+    }
+}
+
+function changeLayoutToAlternative() {
+    let characterButtons = document.querySelectorAll('.character');
+    if (keyboard.currentLang == 'RUS') {
+        characterButtons.forEach(characterButton => {
+            let keyCode = characterButton.getAttribute('keycode');
+            characterButton.textContent = keyboard.buttonsList[keyCode].altRus;
+        });
+    } else if (keyboard.currentLang == 'ENG') {
+        characterButtons.forEach(characterButton => {
+            let keyCode = characterButton.getAttribute('keycode');
+            characterButton.textContent = keyboard.buttonsList[keyCode].altEng;
+        });
+    }
+}
+
+function changeLayoutToDefault() {
+    let characterButtons = document.querySelectorAll('.character');
+    let capsLock = document.querySelector('.capslock');
+    if (keyboard.currentLang == 'RUS') {
+        if (!capsLock.hasAttribute('active')) {
+            characterButtons.forEach(characterButton => {
+                let keyCode = characterButton.getAttribute('keycode');
+                characterButton.textContent = keyboard.buttonsList[keyCode].defRus;
+            });
+        } else if (capsLock.hasAttribute('active')) {
+            characterButtons.forEach(characterButton => {
+                let keyCode = characterButton.getAttribute('keycode');
+                characterButton.textContent = keyboard.buttonsList[keyCode].defRusUp;
+            });
+        }
+    } else if (keyboard.currentLang == 'ENG') {
+        if (!capsLock.hasAttribute('active')) {
+            characterButtons.forEach(characterButton => {
+                let keyCode = characterButton.getAttribute('keycode');
+                characterButton.textContent = keyboard.buttonsList[keyCode].defEng;
+            });
+        } else if (capsLock.hasAttribute('active')) {
+            characterButtons.forEach(characterButton => {
+                let keyCode = characterButton.getAttribute('keycode');
+                characterButton.textContent = keyboard.buttonsList[keyCode].defEngUp;
+            });
+        }
     }
 }
 
@@ -63,30 +108,30 @@ function defineChangeLanguageNeed(pressedButtons) {
 function changeLanguage() {
     let characterButtons = document.querySelectorAll('.character');
     let capsLock = document.querySelector('.capslock');
-    if (keyboard.currentLang == 'RU') {
-        keyboard.currentLang = 'EN';
+    if (keyboard.currentLang == 'RUS') {
+        keyboard.currentLang = 'ENG';
         if (!capsLock.hasAttribute('active')) {
             characterButtons.forEach(characterButton => {
                 let keyCode = characterButton.getAttribute('keycode');
-                characterButton.textContent = keyboard.buttonsList[keyCode].altValue;
+                characterButton.textContent = keyboard.buttonsList[keyCode].defEng;
             });
         } else if (capsLock.hasAttribute('active')) {
             characterButtons.forEach(characterButton => {
                 let keyCode = characterButton.getAttribute('keycode');
-                characterButton.textContent = keyboard.buttonsList[keyCode].altValueUp;
+                characterButton.textContent = keyboard.buttonsList[keyCode].defEngUp;
             });
         }
-    } else if (keyboard.currentLang == 'EN') {
-        keyboard.currentLang = 'RU';
+    } else if (keyboard.currentLang == 'ENG') {
+        keyboard.currentLang = 'RUS';
         if (!capsLock.hasAttribute('active')) {
             characterButtons.forEach(characterButton => {
                 let keyCode = characterButton.getAttribute('keycode');
-                characterButton.textContent = keyboard.buttonsList[keyCode].defValue;
+                characterButton.textContent = keyboard.buttonsList[keyCode].defRus;
             });
         } else if (capsLock.hasAttribute('active')) {
             characterButtons.forEach(characterButton => {
                 let keyCode = characterButton.getAttribute('keycode');
-                characterButton.textContent = keyboard.buttonsList[keyCode].defValueUp;
+                characterButton.textContent = keyboard.buttonsList[keyCode].defRusUp;
             });
         }
     }
@@ -96,6 +141,8 @@ export {
     defineButton,
     changeCharactersToUppercase,
     changeCharactersToLowercase,
+    changeLayoutToAlternative,
+    changeLayoutToDefault,
     defineChangeLanguageNeed,
     changeLanguage
 };

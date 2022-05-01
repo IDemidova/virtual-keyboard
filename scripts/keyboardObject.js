@@ -4,7 +4,7 @@ import { buttons } from './buttonsList.js';
 import { Button } from './buttonClass.js';
 
 const keyboard = {
-    currentLang: 'RU',
+    currentLang: 'RUS',
     buttonsUsed: [],
     buttonsList: {},
     defineButtonsUsed() {

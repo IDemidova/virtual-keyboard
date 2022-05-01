@@ -5,6 +5,8 @@ import {
     defineButton,
     changeCharactersToUppercase,
     changeCharactersToLowercase,
+    changeLayoutToAlternative,
+    changeLayoutToDefault,
     defineChangeLanguageNeed,
     changeLanguage
 }
@@ -28,7 +30,7 @@ window.addEventListener('keydown', (event) => {
             changeCharactersToUppercase();
         }
         if (button.getAttribute('keycode') == '16') {
-            changeCharactersToUppercase();
+            changeLayoutToAlternative();
         }
         button.classList.add('pressed');
 
@@ -50,7 +52,7 @@ window.addEventListener('keyup', (event) => {
             }
         } else {
             if (button.getAttribute('keycode') == '16') {
-                changeCharactersToLowercase();
+                changeLayoutToDefault();
             }
             button.classList.remove('pressed');
         }
