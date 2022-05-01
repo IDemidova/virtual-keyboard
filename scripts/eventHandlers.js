@@ -138,6 +138,10 @@ function changeLanguage() {
     keyboard.localStorage.setItem('lang', keyboard.currentLang);
 }
 
+function focusOnTextarea() {
+    document.querySelector('textarea').focus();
+}
+
 export {
     defineButton,
     changeCharactersToUppercase,
@@ -145,5 +149,6 @@ export {
     changeLayoutToAlternative,
     changeLayoutToDefault,
     defineChangeLanguageNeed,
-    changeLanguage
+    changeLanguage,
+    focusOnTextarea
 };

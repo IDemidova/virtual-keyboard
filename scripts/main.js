@@ -8,7 +8,8 @@ import {
     changeLayoutToAlternative,
     changeLayoutToDefault,
     defineChangeLanguageNeed,
-    changeLanguage
+    changeLanguage,
+    focusOnTextarea
 }
     from './eventHandlers.js';
 
@@ -37,6 +38,8 @@ window.addEventListener('keydown', (event) => {
         if (!pressedButtons.includes(button)) {
             pressedButtons.push(button);
         }
+
+        focusOnTextarea();
     }
 });
 
