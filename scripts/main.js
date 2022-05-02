@@ -9,7 +9,8 @@ import {
     changeLayoutToDefault,
     defineChangeLanguageNeed,
     changeLanguage,
-    focusOnTextarea
+    focusOnTextarea,
+    printCharacter
 }
     from './eventHandlers.js';
 
@@ -76,11 +77,12 @@ window.addEventListener('keyup', (event) => {
 });
 
 let keyboardLayout = document.querySelector('.keyboard');
+let mousedownTimeout;
+let printingInterval;
 
 keyboardLayout.addEventListener('mouseover', (event) => {
     let keyCode = event.target.getAttribute('keycode');
     if (keyboard.buttonsUsed.includes(keyCode)) {
-
         event.target.classList.add('hover');
     }
 });
@@ -88,25 +90,53 @@ keyboardLayout.addEventListener('mouseover', (event) => {
 keyboardLayout.addEventListener('mouseout', (event) => {
     let keyCode = event.target.getAttribute('keycode');
     if (keyboard.buttonsUsed.includes(keyCode)) {
+        clearTimeout(mousedownTimeout);
+
+        clearInterval(printingInterval);
 
         event.target.classList.remove('hover');
+
+        event.target.classList.remove('pressed');
+    }
+});
+
+keyboardLayout.addEventListener('click', (event) => {
+    let keyCode = event.target.getAttribute('keycode');
+    if (keyboard.buttonsUsed.includes(keyCode)) {
+        printCharacter(event);
+
+        event.preventDefault();
+
+        focusOnTextarea();
+
+        event.target.classList.add('pressed');
+        setTimeout(() => { event.target.classList.remove('pressed'); }, 50);
     }
 });
 
 keyboardLayout.addEventListener('mousedown', (event) => {
-    let keyCode = event.target.getAttribute('keycode');
-    if (keyboard.buttonsUsed.includes(keyCode)) {
-        event.preventDefault();
+    event.preventDefault();
+    mousedownTimeout = setTimeout(() => {
+        let keyCode = event.target.getAttribute('keycode');
+        if (keyboard.buttonsUsed.includes(keyCode)) {
+            printingInterval = setInterval(() => {
+                printCharacter(event);
+            }, 50);
 
-        event.target.classList.add('pressed');
+            focusOnTextarea();
 
-        focusOnTextarea();
-    }
+            event.target.classList.add('pressed');
+        }
+    }, 50);
 });
 
 keyboardLayout.addEventListener('mouseup', (event) => {
     let keyCode = event.target.getAttribute('keycode');
     if (keyboard.buttonsUsed.includes(keyCode)) {
+        clearTimeout(mousedownTimeout);
+
+        clearInterval(printingInterval);
+
         event.target.classList.remove('pressed');
     }
 });

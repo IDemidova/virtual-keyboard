@@ -17,8 +17,14 @@ class Button {
         }
         if (btnSettings.type == 'control') {
             this.name = btnSettings.name;
+            if (btnSettings.value) {
+                this.value = btnSettings.value;
+            }
             if (btnSettings.side) {
                 this.side = btnSettings.side;
+            }
+            if (btnSettings.subtype) {
+                this.subtype = btnSettings.subtype;
             }
         }
         this.keyCode = btnSettings.keyCode;
@@ -32,9 +38,11 @@ class Button {
         }
         if (this.type == 'control') {
             if (this.side) {
-                return `<button class='button ${this.type} ${this.desc}' keycode='${this.keyCode}' side='${this.side}'>${this.name}</button>`;
+                return `<button class='button ${this.type} ${this.desc}' keycode='${this.keyCode}' desc='${this.desc}' side='${this.side}'>${this.name}</button>`;
+            } else if (this.subtype) {
+                return `<button class='button ${this.type} ${this.subtype} ${this.desc}' keycode='${this.keyCode}' desc='${this.desc}'>${this.name}</button>`;
             } else {
-                return `<button class='button ${this.type} ${this.desc}' keycode='${this.keyCode}'>${this.name}</button>`;
+                return `<button class='button ${this.type} ${this.desc}' keycode='${this.keyCode}' desc='${this.desc}'>${this.name}</button>`;
             }
         }
     }

@@ -142,6 +142,22 @@ function focusOnTextarea() {
     document.querySelector('textarea').focus();
 }
 
+function printCharacter(event) {
+    let character = event.target.classList.contains('character');
+    let control = event.target.classList.contains('control');
+    let printable = event.target.classList.contains('printable');
+    let textarea = document.querySelector('textarea');
+
+    if (character) {
+        textarea.value += event.target.textContent;
+    }
+
+    if (control && printable) {
+        let desc = event.target.getAttribute('desc');
+        textarea.value += keyboard.buttonsList[desc].value;
+    }
+}
+
 export {
     defineButton,
     changeCharactersToUppercase,
@@ -150,5 +166,6 @@ export {
     changeLayoutToDefault,
     defineChangeLanguageNeed,
     changeLanguage,
-    focusOnTextarea
+    focusOnTextarea,
+    printCharacter
 };

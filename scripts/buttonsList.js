@@ -154,7 +154,9 @@ const buttons = [
         keyCode: '9',
         desc: 'tab',
         name: 'Tab',
-        type: 'control'
+        value: '    ',
+        type: 'control',
+        subtype: 'printable'
     },
     {
         keyCode: '81',
@@ -436,7 +438,9 @@ const buttons = [
         keyCode: '13',
         desc: 'enter',
         name: 'Enter',
-        type: 'control'
+        value: '\n',
+        type: 'control',
+        subtype: 'printable'
     },
     {
         keyCode: '16',
@@ -592,7 +596,9 @@ const buttons = [
         keyCode: '32',
         desc: 'space',
         name: '',
-        type: 'control'
+        value: ' ',
+        type: 'control',
+        subtype: 'printable'
     },
     {
         keyCode: '18',

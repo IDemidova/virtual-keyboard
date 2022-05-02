@@ -38,7 +38,7 @@
     margin-bottom: 20px;
 }
 
-.textarea:focus-visible {
+.textarea:focus {
     border: 3px solid #727272;
 }
 
@@ -61,11 +61,7 @@
     padding: 0 12px;
     margin: 5px;
     cursor: pointer;
-    transition: 0.5s;
-}
-
-.hover {
-    background-color: rgb(240, 150, 140);
+    transition: 0.2s;
 }
 
 i {
@@ -84,6 +80,10 @@ i {
 
 .space {
     width: 220px;
+}
+
+.hover {
+    background-color: rgb(240, 150, 140);
 }
 
 .pressed {
