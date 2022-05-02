@@ -27,7 +27,7 @@ window.addEventListener('keydown', (event) => {
             if (!button.hasAttribute('active')) {
                 button.setAttribute('active', '');
             } else {
-                button.removeAttribute('active', '');
+                button.removeAttribute('active');
             }
             changeCharactersToUppercase();
         }
@@ -96,21 +96,35 @@ keyboardLayout.addEventListener('mouseout', (event) => {
 
         event.target.classList.remove('hover');
 
-        event.target.classList.remove('pressed');
+        if (!event.target.hasAttribute('active')) {
+            event.target.classList.remove('pressed');
+        }
     }
 });
 
 keyboardLayout.addEventListener('click', (event) => {
     let keyCode = event.target.getAttribute('keycode');
     if (keyboard.buttonsUsed.includes(keyCode)) {
-        printCharacter(event);
-
         event.preventDefault();
 
         focusOnTextarea();
 
-        event.target.classList.add('pressed');
-        setTimeout(() => { event.target.classList.remove('pressed'); }, 50);
+        if (event.target.getAttribute('keycode') == '20') {
+            if (!event.target.hasAttribute('active')) {
+                event.target.setAttribute('active', '');
+                changeCharactersToUppercase();
+                event.target.classList.add('pressed');
+            } else {
+                event.target.removeAttribute('active');
+                changeCharactersToLowercase();
+                event.target.classList.remove('pressed');
+            }
+        } else {
+            printCharacter(event);
+
+            event.target.classList.add('pressed');
+            setTimeout(() => { event.target.classList.remove('pressed'); }, 50);
+        }
     }
 });
 
