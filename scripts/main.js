@@ -166,6 +166,10 @@ keyboardLayout.addEventListener('mousedown', (event) => {
 keyboardLayout.addEventListener('mouseup', (event) => {
     let keyCode = event.target.getAttribute('keycode');
     if (keyboard.buttonsUsed.includes(keyCode)) {
+        if (event.target.classList.contains('lang')) {
+            changeLanguage();
+        }
+
         clearTimeout(mousedownTimeout);
 
         clearInterval(printingInterval);
