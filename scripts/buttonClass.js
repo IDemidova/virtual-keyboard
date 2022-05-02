@@ -3,7 +3,7 @@
 class Button {
     constructor(btnSettings, currentLang) {
         if (btnSettings.type == 'character') {
-            if (currentLang == 'RUS') {
+            if (currentLang == 'РУС') {
                 this.curValue = btnSettings.defRus;
             } else {
                 this.curValue = btnSettings.defEng;
@@ -16,7 +16,11 @@ class Button {
             this.altEng = btnSettings.altEng;
         }
         if (btnSettings.type == 'control') {
-            this.name = btnSettings.name;
+            if (btnSettings.desc == 'lang') {
+                this.name = currentLang;
+            } else {
+                this.name = btnSettings.name;
+            }
             if (btnSettings.value) {
                 this.value = btnSettings.value;
             }

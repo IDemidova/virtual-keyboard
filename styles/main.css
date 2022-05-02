@@ -64,18 +64,26 @@
     transition: 0.2s;
 }
 
+.capslock,
+.enter,
 .shiftleft,
 .shiftright {
-    padding: 0 25px;
+    padding: 0 30px;
 }
 
+.delete,
+.tab,
 .ctrlleft,
 .ctrlright {
-    padding: 0 25px;
+    padding: 0 15px;
+}
+
+.lang {
+    width: 70px;
 }
 
 .space {
-    width: 220px;
+    width: 240px;
 }
 
 .hover {

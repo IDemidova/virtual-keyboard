@@ -580,9 +580,9 @@ const buttons = [
         type: 'control'
     },
     {
-        keyCode: '91',
-        desc: 'windows',
-        name: '&#128471',
+        keyCode: '00',
+        desc: 'lang',
+        name: '',
         type: 'control'
     },
     {

@@ -31,7 +31,7 @@ function defineVirtualButton(event) {
 
 function changeCharactersToUppercase() {
     let characterButtons = document.querySelectorAll('.character');
-    if (keyboard.currentLang == 'RUS') {
+    if (keyboard.currentLang == 'РУС') {
         characterButtons.forEach(characterButton => {
             let keyCode = characterButton.getAttribute('keycode');
             characterButton.textContent = keyboard.buttonsList[keyCode].defRusUp;
@@ -47,7 +47,7 @@ function changeCharactersToUppercase() {
 
 function changeCharactersToLowercase() {
     let characterButtons = document.querySelectorAll('.character');
-    if (keyboard.currentLang == 'RUS') {
+    if (keyboard.currentLang == 'РУС') {
         characterButtons.forEach(characterButton => {
             let keyCode = characterButton.getAttribute('keycode');
             characterButton.textContent = keyboard.buttonsList[keyCode].defRus;
@@ -63,7 +63,7 @@ function changeCharactersToLowercase() {
 
 function changeLayoutToAlternative() {
     let characterButtons = document.querySelectorAll('.character');
-    if (keyboard.currentLang == 'RUS') {
+    if (keyboard.currentLang == 'РУС') {
         characterButtons.forEach(characterButton => {
             let keyCode = characterButton.getAttribute('keycode');
             characterButton.textContent = keyboard.buttonsList[keyCode].altRus;
@@ -79,7 +79,7 @@ function changeLayoutToAlternative() {
 function changeLayoutToDefault() {
     let characterButtons = document.querySelectorAll('.character');
     let capsLock = document.querySelector('.capslock');
-    if (keyboard.currentLang == 'RUS') {
+    if (keyboard.currentLang == 'РУС') {
         if (!capsLock.hasAttribute('active')) {
             characterButtons.forEach(characterButton => {
                 let keyCode = characterButton.getAttribute('keycode');
@@ -118,7 +118,8 @@ function defineChangeLanguageNeed(pressedButtons) {
 function changeLanguage() {
     let characterButtons = document.querySelectorAll('.character');
     let capsLock = document.querySelector('.capslock');
-    if (keyboard.currentLang == 'RUS') {
+    let langButton = document.querySelector('.lang');
+    if (keyboard.currentLang == 'РУС') {
         keyboard.currentLang = 'ENG';
         if (!capsLock.hasAttribute('active')) {
             characterButtons.forEach(characterButton => {
@@ -132,7 +133,7 @@ function changeLanguage() {
             });
         }
     } else if (keyboard.currentLang == 'ENG') {
-        keyboard.currentLang = 'RUS';
+        keyboard.currentLang = 'РУС';
         if (!capsLock.hasAttribute('active')) {
             characterButtons.forEach(characterButton => {
                 let keyCode = characterButton.getAttribute('keycode');
@@ -146,6 +147,7 @@ function changeLanguage() {
         }
     }
     keyboard.localStorage.setItem('lang', keyboard.currentLang);
+    langButton.textContent = keyboard.currentLang;
 }
 
 function focusOnTextarea() {

@@ -4,7 +4,7 @@ import { buttons } from './buttonsList.js';
 import { Button } from './buttonClass.js';
 
 const keyboard = {
-    currentLang: 'RUS',
+    currentLang: 'РУС',
     buttonsUsed: [],
     buttonsList: {},
     localStorage: window.localStorage,
