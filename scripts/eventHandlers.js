@@ -149,12 +149,12 @@ function printCharacter(event) {
     let textarea = document.querySelector('textarea');
 
     if (character) {
-        textarea.value += event.target.textContent;
+        textarea.setRangeText(event.target.textContent, textarea.selectionStart, textarea.selectionEnd, 'end');
     }
 
     if (control && printable) {
         let desc = event.target.getAttribute('desc');
-        textarea.value += keyboard.buttonsList[desc].value;
+        textarea.setRangeText(keyboard.buttonsList[desc].value, textarea.selectionStart, textarea.selectionEnd, 'end');
     }
 }
 
