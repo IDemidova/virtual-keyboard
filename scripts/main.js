@@ -31,9 +31,11 @@ window.addEventListener('keydown', (event) => {
             }
             changeCharactersToUppercase();
         }
+
         if (button.getAttribute('keycode') == '16') {
             changeLayoutToAlternative();
         }
+
         button.classList.add('pressed');
 
         if (!pressedButtons.includes(button)) {
@@ -61,6 +63,8 @@ window.addEventListener('keyup', (event) => {
         } else {
             if (button.getAttribute('keycode') == '16') {
                 changeLayoutToDefault();
+                let shiftButtons = document.querySelectorAll('button[keyCode="16"]');
+                shiftButtons.forEach(shiftButton => { shiftButton.classList.remove('pressed'); });
             }
             button.classList.remove('pressed');
         }
@@ -118,6 +122,20 @@ keyboardLayout.addEventListener('click', (event) => {
                 event.target.removeAttribute('active');
                 changeCharactersToLowercase();
                 event.target.classList.remove('pressed');
+            }
+        } else if (event.target.getAttribute('keycode') == '16') {
+            if (!event.target.hasAttribute('active')) {
+                event.target.setAttribute('active', '');
+                changeLayoutToAlternative();
+                event.target.classList.add('pressed');
+            } else {
+                event.target.removeAttribute('active');
+                event.target.classList.remove('pressed');
+                let shiftLeft = document.querySelector('.shiftleft');
+                let shiftRight = document.querySelector('.shiftright');
+                if (!shiftLeft.hasAttribute('active') && !shiftRight.hasAttribute('active')) {
+                    changeLayoutToDefault();
+                }
             }
         } else {
             printCharacter(event);
