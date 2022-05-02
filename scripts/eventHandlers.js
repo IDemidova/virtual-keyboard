@@ -2,7 +2,7 @@
 
 import { keyboard } from './keyboardObject.js';
 
-function defineButton(event) {
+function definePhysicalButton(event) {
     let buttonSelector;
     let keyCode = String(event.keyCode);
     if (keyCode == '16' || keyCode == '17' || keyCode == '18') {
@@ -17,6 +17,16 @@ function defineButton(event) {
     }
     let button = document.querySelector(buttonSelector);
     return button;
+}
+
+function defineVirtualButton(event) {
+    if (event.target.hasAttribute('keycode')) {
+        let button = event.target;
+        return button;
+    } else if (event.target.parentNode.hasAttribute('keycode')) {
+        let button = event.target.parentNode;
+        return button;
+    }
 }
 
 function changeCharactersToUppercase() {
@@ -159,7 +169,8 @@ function printCharacter(event) {
 }
 
 export {
-    defineButton,
+    definePhysicalButton,
+    defineVirtualButton,
     changeCharactersToUppercase,
     changeCharactersToLowercase,
     changeLayoutToAlternative,

@@ -2,7 +2,8 @@
 
 import { keyboard } from './keyboardObject.js';
 import {
-    defineButton,
+    definePhysicalButton,
+    defineVirtualButton,
     changeCharactersToUppercase,
     changeCharactersToLowercase,
     changeLayoutToAlternative,
@@ -21,7 +22,7 @@ let pressedButtons = [];
 window.addEventListener('keydown', (event) => {
     let keyCode = String(event.keyCode);
     if (keyboard.buttonsUsed.includes(keyCode)) {
-        let button = defineButton(event);
+        let button = definePhysicalButton(event);
 
         if (button.getAttribute('keycode') == '20') {
             if (!button.hasAttribute('active')) {
@@ -53,7 +54,7 @@ window.addEventListener('keydown', (event) => {
 window.addEventListener('keyup', (event) => {
     let keyCode = String(event.keyCode);
     if (keyboard.buttonsUsed.includes(keyCode)) {
-        let button = defineButton(event);
+        let button = definePhysicalButton(event);
 
         if (button.getAttribute('keycode') == '20') {
             if (!button.hasAttribute('active')) {

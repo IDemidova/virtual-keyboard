@@ -64,10 +64,6 @@
     transition: 0.2s;
 }
 
-i {
-    color: white;
-}
-
 .shiftleft,
 .shiftright {
     padding: 0 25px;

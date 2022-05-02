@@ -562,7 +562,7 @@ const buttons = [
     {
         keyCode: '38',
         desc: 'arrowup',
-        name: '<i class="fa-solid fa-arrow-up"></i>',
+        name: '&#129093',
         type: 'control'
     },
     {
@@ -582,7 +582,7 @@ const buttons = [
     {
         keyCode: '91',
         desc: 'windows',
-        name: '<i class="fa-brands fa-windows"></i>',
+        name: '&#128471',
         type: 'control'
     },
     {
@@ -617,19 +617,19 @@ const buttons = [
     {
         keyCode: '37',
         desc: 'arrowleft',
-        name: '<i class="fa-solid fa-arrow-left"></i>',
+        name: '&#129092',
         type: 'control'
     },
     {
         keyCode: '40',
         desc: 'arrowdown',
-        name: '<i class="fa-solid fa-arrow-down"></i>',
+        name: '&#129095',
         type: 'control'
     },
     {
         keyCode: '39',
         desc: 'arrowright',
-        name: '<i class="fa-solid fa-arrow-right"></i>',
+        name: '&#129094',
         type: 'control'
     }
 ];
