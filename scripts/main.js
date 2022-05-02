@@ -74,3 +74,39 @@ window.addEventListener('keyup', (event) => {
         pressedButtons = [];
     }
 });
+
+let keyboardLayout = document.querySelector('.keyboard');
+
+keyboardLayout.addEventListener('mouseover', (event) => {
+    let keyCode = event.target.getAttribute('keycode');
+    if (keyboard.buttonsUsed.includes(keyCode)) {
+
+        event.target.classList.add('hover');
+    }
+});
+
+keyboardLayout.addEventListener('mouseout', (event) => {
+    let keyCode = event.target.getAttribute('keycode');
+    if (keyboard.buttonsUsed.includes(keyCode)) {
+
+        event.target.classList.remove('hover');
+    }
+});
+
+keyboardLayout.addEventListener('mousedown', (event) => {
+    let keyCode = event.target.getAttribute('keycode');
+    if (keyboard.buttonsUsed.includes(keyCode)) {
+        event.preventDefault();
+
+        event.target.classList.add('pressed');
+
+        focusOnTextarea();
+    }
+});
+
+keyboardLayout.addEventListener('mouseup', (event) => {
+    let keyCode = event.target.getAttribute('keycode');
+    if (keyboard.buttonsUsed.includes(keyCode)) {
+        event.target.classList.remove('pressed');
+    }
+});
