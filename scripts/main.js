@@ -3,7 +3,6 @@
 import { keyboard } from './keyboardObject.js';
 import {
     definePhysicalButton,
-    defineVirtualButton,
     changeCharactersToUppercase,
     changeCharactersToLowercase,
     changeLayoutToAlternative,

@@ -19,16 +19,6 @@ function definePhysicalButton(event) {
     return button;
 }
 
-function defineVirtualButton(event) {
-    if (event.target.hasAttribute('keycode')) {
-        let button = event.target;
-        return button;
-    } else if (event.target.parentNode.hasAttribute('keycode')) {
-        let button = event.target.parentNode;
-        return button;
-    }
-}
-
 function changeCharactersToUppercase() {
     let characterButtons = document.querySelectorAll('.character');
     if (keyboard.currentLang == 'РУС') {
@@ -172,7 +162,6 @@ function printCharacter(event) {
 
 export {
     definePhysicalButton,
-    defineVirtualButton,
     changeCharactersToUppercase,
     changeCharactersToLowercase,
     changeLayoutToAlternative,
