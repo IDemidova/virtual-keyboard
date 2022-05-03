@@ -164,7 +164,11 @@ keyboardLayout.addEventListener('mousedown', (event) => {
         let keyCode = event.target.getAttribute('keycode');
         if (keyboard.buttonsUsed.includes(keyCode)) {
             printingInterval = setInterval(() => {
-                printCharacter(event);
+                if (event.target.getAttribute('keycode') == '8' || event.target.getAttribute('keycode') == '46') {
+                    deleteCharacter(event);
+                } else {
+                    printCharacter(event);
+                }
             }, 50);
 
             focusOnTextarea();
