@@ -198,13 +198,57 @@ function deleteCharacter(event) {
     let textarea = document.querySelector('textarea');
     if (textarea.selectionStart == textarea.selectionEnd) {
         if (event.target.classList.contains('backspace')) {
-            textarea.selectionStart = textarea.selectionStart - 1;
+            if (textarea.selectionStart > 0) {
+                textarea.selectionStart = textarea.selectionStart - 1;
+            }
         } else if (event.target.classList.contains('delete')) {
             textarea.selectionEnd = textarea.selectionEnd + 1;
         }
         textarea.setRangeText('', textarea.selectionStart, textarea.selectionEnd, 'end');
     } else if (textarea.selectionStart != textarea.selectionEnd) {
         textarea.setRangeText('', textarea.selectionStart, textarea.selectionEnd, 'end');
+    }
+}
+
+function moveCaret(event) {
+    let textarea = document.querySelector('textarea');
+    let textareaLength = textarea.value.length;
+    if (textarea.selectionStart == textarea.selectionEnd) {
+        if (event.target.classList.contains('arrowleft')) {
+            if (textarea.selectionStart != 0) {
+                textarea.selectionStart = textarea.selectionStart - 1;
+                textarea.selectionEnd = textarea.selectionStart;
+            }
+        }
+        if (event.target.classList.contains('arrowright')) {
+            if (textarea.selectionEnd != textareaLength) {
+                textarea.selectionStart = textarea.selectionStart + 1;
+                textarea.selectionEnd = textarea.selectionStart;
+            }
+        }
+        if (event.target.classList.contains('arrowup')) {
+            textarea.selectionStart = 0;
+            textarea.selectionEnd = textarea.selectionStart;
+        }
+        if (event.target.classList.contains('arrowdown')) {
+            textarea.selectionStart = textareaLength;
+            textarea.selectionEnd = textarea.selectionStart;
+        }
+    } else if (textarea.selectionStart != textarea.selectionEnd) {
+        if (event.target.classList.contains('arrowleft')) {
+            textarea.selectionEnd = textarea.selectionStart;
+        }
+        if (event.target.classList.contains('arrowright')) {
+            textarea.selectionStart = textarea.selectionEnd;
+        }
+        if (event.target.classList.contains('arrowup')) {
+            textarea.selectionStart = 0;
+            textarea.selectionEnd = textarea.selectionStart;
+        }
+        if (event.target.classList.contains('arrowdown')) {
+            textarea.selectionStart = textareaLength;
+            textarea.selectionEnd = textarea.selectionStart;
+        }
     }
 }
 
@@ -218,5 +262,6 @@ export {
     changeLanguage,
     focusOnTextarea,
     printCharacter,
-    deleteCharacter
+    deleteCharacter,
+    moveCaret
 };

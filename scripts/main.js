@@ -11,7 +11,8 @@ import {
     changeLanguage,
     focusOnTextarea,
     printCharacter,
-    deleteCharacter
+    deleteCharacter,
+    moveCaret
 }
     from './eventHandlers.js';
 
@@ -148,6 +149,8 @@ keyboardLayout.addEventListener('click', (event) => {
                 }
             } else if (event.target.getAttribute('keycode') == '8' || event.target.getAttribute('keycode') == '46') {
                 deleteCharacter(event);
+            } else if (event.target.getAttribute('keycode') == '37' || event.target.getAttribute('keycode') == '38' || event.target.getAttribute('keycode') == '39' || event.target.getAttribute('keycode') == '40') {
+                moveCaret(event);
             } else {
                 printCharacter(event);
             }
@@ -166,6 +169,8 @@ keyboardLayout.addEventListener('mousedown', (event) => {
             printingInterval = setInterval(() => {
                 if (event.target.getAttribute('keycode') == '8' || event.target.getAttribute('keycode') == '46') {
                     deleteCharacter(event);
+                } else if (event.target.getAttribute('keycode') == '37' || event.target.getAttribute('keycode') == '38' || event.target.getAttribute('keycode') == '39' || event.target.getAttribute('keycode') == '40') {
+                    moveCaret(event);
                 } else {
                     printCharacter(event);
                 }
