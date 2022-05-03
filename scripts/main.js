@@ -138,6 +138,15 @@ keyboardLayout.addEventListener('click', (event) => {
                 }
             }
         } else {
+            if (event.target.getAttribute('keycode') == '18') {
+                let shiftLeft = document.querySelector('.shiftleft');
+                if (shiftLeft.hasAttribute('active')) {
+                    shiftLeft.removeAttribute('active');
+                    shiftLeft.classList.remove('pressed');
+                    changeLanguage();
+                }
+            }
+
             printCharacter(event);
 
             event.target.classList.add('pressed');

@@ -108,32 +108,66 @@ function defineChangeLanguageNeed(pressedButtons) {
 function changeLanguage() {
     let characterButtons = document.querySelectorAll('.character');
     let capsLock = document.querySelector('.capslock');
+    let shiftLeft = document.querySelector('.shiftleft');
+    let shiftRight = document.querySelector('.shiftright');
     let langButton = document.querySelector('.lang');
     if (keyboard.currentLang == 'РУС') {
         keyboard.currentLang = 'ENG';
         if (!capsLock.hasAttribute('active')) {
-            characterButtons.forEach(characterButton => {
-                let keyCode = characterButton.getAttribute('keycode');
-                characterButton.textContent = keyboard.buttonsList[keyCode].defEng;
-            });
+            if (shiftLeft.hasAttribute('active') || shiftRight.hasAttribute('active')) {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].altEng;
+                });
+
+            } else if (!shiftLeft.hasAttribute('active') && !shiftRight.hasAttribute('active')) {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].defEng;
+                });
+            }
         } else if (capsLock.hasAttribute('active')) {
-            characterButtons.forEach(characterButton => {
-                let keyCode = characterButton.getAttribute('keycode');
-                characterButton.textContent = keyboard.buttonsList[keyCode].defEngUp;
-            });
+            if (shiftLeft.hasAttribute('active') || shiftRight.hasAttribute('active')) {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].altEng;
+                });
+
+            } else if (!shiftLeft.hasAttribute('active') && !shiftRight.hasAttribute('active')) {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].defEngUp;
+                });
+            }
         }
     } else if (keyboard.currentLang == 'ENG') {
         keyboard.currentLang = 'РУС';
         if (!capsLock.hasAttribute('active')) {
-            characterButtons.forEach(characterButton => {
-                let keyCode = characterButton.getAttribute('keycode');
-                characterButton.textContent = keyboard.buttonsList[keyCode].defRus;
-            });
+            if (shiftLeft.hasAttribute('active') || shiftRight.hasAttribute('active')) {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].altRus;
+                });
+
+            } else if (!shiftLeft.hasAttribute('active') && !shiftRight.hasAttribute('active')) {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].defRus;
+                });
+            }
         } else if (capsLock.hasAttribute('active')) {
-            characterButtons.forEach(characterButton => {
-                let keyCode = characterButton.getAttribute('keycode');
-                characterButton.textContent = keyboard.buttonsList[keyCode].defRusUp;
-            });
+            if (shiftLeft.hasAttribute('active') || shiftRight.hasAttribute('active')) {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].altRus;
+                });
+
+            } else if (!shiftLeft.hasAttribute('active') && !shiftRight.hasAttribute('active')) {
+                characterButtons.forEach(characterButton => {
+                    let keyCode = characterButton.getAttribute('keycode');
+                    characterButton.textContent = keyboard.buttonsList[keyCode].defRusUp;
+                });
+            }
         }
     }
     keyboard.localStorage.setItem('lang', keyboard.currentLang);
