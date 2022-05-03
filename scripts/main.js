@@ -199,13 +199,15 @@ keyboardLayout.addEventListener('mouseup', (event) => {
 });
 
 let additionalLayout = document.querySelector('.inner');
+let popupLayout = document.querySelector('.wrapper');
 
 additionalLayout.addEventListener('click', (event) => {
-    // if (event.target.classList.contains('info')) {
-    //     //открыть попап
-    // }
-
     if (event.target.classList.contains('info') || event.target.classList.contains('save') || event.target.classList.contains('remove')) {
+        if (event.target.classList.contains('info')) {
+            popupLayout.classList.add('visible');
+            document.body.classList.add('hidden');
+        }
+
         if (event.target.classList.contains('save') || event.target.classList.contains('remove')) {
             event.preventDefault();
 
@@ -230,5 +232,12 @@ additionalLayout.addEventListener('mousedown', (event) => {
         event.preventDefault();
 
         focusOnTextarea();
+    }
+});
+
+popupLayout.addEventListener('click', (event) => {
+    if (event.target.classList.contains('close') || event.target.classList.contains('wrapper')) {
+        popupLayout.classList.remove('visible');
+        document.body.classList.remove('hidden');
     }
 });

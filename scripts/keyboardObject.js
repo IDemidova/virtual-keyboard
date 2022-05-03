@@ -2,6 +2,7 @@
 
 import { buttons } from './buttonsList.js';
 import { Button } from './buttonClass.js';
+import { renderPopup } from './popupMarckup.js';
 
 const keyboard = {
     currentLang: 'РУС',
@@ -50,7 +51,8 @@ const keyboard = {
             </div>
             <textarea class='textarea'></textarea>
             <div class='keyboard'>${this.renderButtons()}</div>
-        </div>`;
+        </div>
+        <div class='wrapper'>${renderPopup()}</div>`;
         body.insertAdjacentHTML('afterbegin', keyboardMarckup);
     },
     showText() {
