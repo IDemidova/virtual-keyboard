@@ -19,11 +19,82 @@
     margin-bottom: 20px;
 }
 
-
 .desc {
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
+}
+
+.inner {
+    display: flex;
+}
+
+.more {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 10px;
+    margin-left: 195px;
+    margin-right: 90px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    padding-right: 25px;
+}
+
+.info,
+.save,
+.remove {
+    width: 35px;
+    height: 35px;
+    font-weight: bold;
+    color: white;
+    background-color: #B2B2B2;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.info {
+    width: 25px;
+    height: 25px;
+}
+
+.info:hover {
+    background-color: #727272;
+    transform: scale(1.1);
+}
+
+.save:hover {
+    background-color: rgb(84, 197, 84);
+    transform: scale(1.1);
+}
+
+.remove:hover {
+    background-color: rgb(240, 150, 140);
+    transform: scale(1.1);
+}
+
+@keyframes shrink {
+    0% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+.shrink {
+    animation: shrink 0.2s;
 }
 
 .textarea {
@@ -34,8 +105,7 @@
     border-radius: 20px;
     resize: none;
     padding: 20px;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin: 10px 0;
 }
 
 .textarea:focus {

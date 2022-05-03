@@ -197,3 +197,38 @@ keyboardLayout.addEventListener('mouseup', (event) => {
         event.target.classList.remove('pressed');
     }
 });
+
+let additionalLayout = document.querySelector('.inner');
+
+additionalLayout.addEventListener('click', (event) => {
+    // if (event.target.classList.contains('info')) {
+    //     //открыть попап
+    // }
+
+    if (event.target.classList.contains('info') || event.target.classList.contains('save') || event.target.classList.contains('remove')) {
+        if (event.target.classList.contains('save') || event.target.classList.contains('remove')) {
+            event.preventDefault();
+
+            focusOnTextarea();
+
+            if (event.target.classList.contains('save')) {
+                keyboard.saveText();
+            }
+
+            if (event.target.classList.contains('remove')) {
+                keyboard.removeText();
+            }
+        }
+
+        event.target.classList.add('shrink');
+        setTimeout(() => { event.target.classList.remove('shrink'); }, 50);
+    }
+});
+
+additionalLayout.addEventListener('mousedown', (event) => {
+    if (event.target.classList.contains('save') || event.target.classList.contains('remove')) {
+        event.preventDefault();
+
+        focusOnTextarea();
+    }
+});
