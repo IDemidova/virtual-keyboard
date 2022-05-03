@@ -10,7 +10,8 @@ import {
     defineChangeLanguageNeed,
     changeLanguage,
     focusOnTextarea,
-    printCharacter
+    printCharacter,
+    deleteCharacter
 }
     from './eventHandlers.js';
 
@@ -145,9 +146,11 @@ keyboardLayout.addEventListener('click', (event) => {
                     shiftLeft.classList.remove('pressed');
                     changeLanguage();
                 }
+            } else if (event.target.getAttribute('keycode') == '8' || event.target.getAttribute('keycode') == '46') {
+                deleteCharacter(event);
+            } else {
+                printCharacter(event);
             }
-
-            printCharacter(event);
 
             event.target.classList.add('pressed');
             setTimeout(() => { event.target.classList.remove('pressed'); }, 50);

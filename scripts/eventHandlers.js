@@ -194,6 +194,20 @@ function printCharacter(event) {
     }
 }
 
+function deleteCharacter(event) {
+    let textarea = document.querySelector('textarea');
+    if (textarea.selectionStart == textarea.selectionEnd) {
+        if (event.target.classList.contains('backspace')) {
+            textarea.selectionStart = textarea.selectionStart - 1;
+        } else if (event.target.classList.contains('delete')) {
+            textarea.selectionEnd = textarea.selectionEnd + 1;
+        }
+        textarea.setRangeText('', textarea.selectionStart, textarea.selectionEnd, 'end');
+    } else if (textarea.selectionStart != textarea.selectionEnd) {
+        textarea.setRangeText('', textarea.selectionStart, textarea.selectionEnd, 'end');
+    }
+}
+
 export {
     definePhysicalButton,
     changeCharactersToUppercase,
@@ -203,5 +217,6 @@ export {
     defineChangeLanguageNeed,
     changeLanguage,
     focusOnTextarea,
-    printCharacter
+    printCharacter,
+    deleteCharacter
 };
