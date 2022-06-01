@@ -7,6 +7,7 @@ import { renderPopup } from './popupMarckup.js';
 const keyboard = {
     currentLang: 'РУС',
     buttonsUsed: [],
+    controlButtons: [],
     buttonsList: {},
     localStorage: window.localStorage,
     applyLanguage() {
@@ -19,6 +20,13 @@ const keyboard = {
     defineButtonsUsed() {
         for (let i = 0; i < buttons.length; i++) {
             this.buttonsUsed.push(buttons[i].keyCode);
+        }
+    },
+    defineControlButtons() {
+        for (let i = 0; i < buttons.length; i++) {
+            if (buttons[i].type == 'control' && buttons[i].subtype != 'printable') {
+                this.controlButtons.push(buttons[i].keyCode);
+            }
         }
     },
     fillButtonsList() {
@@ -77,6 +85,7 @@ const keyboard = {
     init() {
         this.applyLanguage();
         this.defineButtonsUsed();
+        this.defineControlButtons();
         this.fillButtonsList();
         this.renderKeyboard();
         this.showText();

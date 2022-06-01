@@ -44,12 +44,11 @@ window.addEventListener('keydown', (event) => {
             pressedButtons.push(button);
         }
 
-        if (button.getAttribute('keycode') == '9') {
+        if (!keyboard.controlButtons.includes(button.getAttribute('keycode'))) {
             event.preventDefault();
-            let textarea = document.querySelector('textarea');
-            let desc = button.getAttribute('desc');
-            textarea.setRangeText(keyboard.buttonsList[desc].value, textarea.selectionStart, textarea.selectionEnd, 'end');
         }
+
+        printCharacter(event);
 
         focusOnTextarea();
     }
