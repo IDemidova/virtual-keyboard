@@ -182,7 +182,7 @@ keyboardLayout.addEventListener('mousedown', (event) => {
 
             event.target.classList.add('pressed');
         }
-    }, 50);
+    }, 400);
 });
 
 keyboardLayout.addEventListener('mouseup', (event) => {
