@@ -86,6 +86,7 @@ window.addEventListener('keyup', (event) => {
 
 let keyboardLayout = document.querySelector('.keyboard');
 let mousedownTimeout;
+let printingTimeout;
 let printingInterval;
 
 keyboardLayout.addEventListener('mouseover', (event) => {
@@ -168,21 +169,23 @@ keyboardLayout.addEventListener('mousedown', (event) => {
     mousedownTimeout = setTimeout(() => {
         let keyCode = event.target.getAttribute('keycode');
         if (keyboard.buttonsUsed.includes(keyCode)) {
-            printingInterval = setInterval(() => {
-                if (event.target.getAttribute('keycode') == '8' || event.target.getAttribute('keycode') == '46') {
-                    deleteCharacter(event);
-                } else if (event.target.getAttribute('keycode') == '37' || event.target.getAttribute('keycode') == '38' || event.target.getAttribute('keycode') == '39' || event.target.getAttribute('keycode') == '40') {
-                    moveCaret(event);
-                } else {
-                    printCharacter(event);
-                }
-            }, 50);
+            printingTimeout = setTimeout(() => {
+                printingInterval = setInterval(() => {
+                    if (event.target.getAttribute('keycode') == '8' || event.target.getAttribute('keycode') == '46') {
+                        deleteCharacter(event);
+                    } else if (event.target.getAttribute('keycode') == '37' || event.target.getAttribute('keycode') == '38' || event.target.getAttribute('keycode') == '39' || event.target.getAttribute('keycode') == '40') {
+                        moveCaret(event);
+                    } else {
+                        printCharacter(event);
+                    }
+                }, 50);
+            }, 400);
 
             focusOnTextarea();
 
             event.target.classList.add('pressed');
         }
-    }, 400);
+    }, 50);
 });
 
 keyboardLayout.addEventListener('mouseup', (event) => {
@@ -193,6 +196,8 @@ keyboardLayout.addEventListener('mouseup', (event) => {
         }
 
         clearTimeout(mousedownTimeout);
+
+        clearTimeout(printingTimeout);
 
         clearInterval(printingInterval);
 
