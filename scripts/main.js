@@ -44,7 +44,7 @@ window.addEventListener('keydown', (event) => {
             pressedButtons.push(button);
         }
 
-        if (!keyboard.controlButtons.includes(button.getAttribute('keycode'))) {
+        if (!keyboard.controlButtons.includes(keyCode)) {
             event.preventDefault();
         }
 
