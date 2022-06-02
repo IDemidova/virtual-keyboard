@@ -118,6 +118,9 @@ keyboardLayout.addEventListener('click', (event) => {
 
         focusOnTextarea();
 
+        let shiftLeft = document.querySelector('.shiftleft');
+        let shiftRight = document.querySelector('.shiftright');
+
         if (event.target.getAttribute('keycode') == '20') {
             if (!event.target.hasAttribute('active')) {
                 event.target.setAttribute('active', '');
@@ -136,15 +139,12 @@ keyboardLayout.addEventListener('click', (event) => {
             } else {
                 event.target.removeAttribute('active');
                 event.target.classList.remove('pressed');
-                let shiftLeft = document.querySelector('.shiftleft');
-                let shiftRight = document.querySelector('.shiftright');
                 if (!shiftLeft.hasAttribute('active') && !shiftRight.hasAttribute('active')) {
                     changeLayoutToDefault();
                 }
             }
         } else {
             if (event.target.getAttribute('keycode') == '18') {
-                let shiftLeft = document.querySelector('.shiftleft');
                 if (shiftLeft.hasAttribute('active')) {
                     shiftLeft.removeAttribute('active');
                     shiftLeft.classList.remove('pressed');
@@ -156,6 +156,14 @@ keyboardLayout.addEventListener('click', (event) => {
                 moveCaret(event);
             } else {
                 printCharacter(event);
+            }
+
+            if (shiftLeft.hasAttribute('active')) {
+                shiftLeft.removeAttribute('active');
+                shiftLeft.classList.remove('pressed');
+                if (!shiftLeft.hasAttribute('active') && !shiftRight.hasAttribute('active')) {
+                    changeLayoutToDefault();
+                }
             }
 
             event.target.classList.add('pressed');
