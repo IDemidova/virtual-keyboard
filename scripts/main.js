@@ -101,6 +101,8 @@ keyboardLayout.addEventListener('mouseout', (event) => {
     if (keyboard.buttonsUsed.includes(keyCode)) {
         clearTimeout(mousedownTimeout);
 
+        clearTimeout(printingTimeout);
+
         clearInterval(printingInterval);
 
         event.target.classList.remove('hover');
