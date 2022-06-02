@@ -44,12 +44,11 @@ window.addEventListener('keydown', (event) => {
             pressedButtons.push(button);
         }
 
-        if (button.getAttribute('keycode') == '9') {
+        if (!keyboard.controlButtons.includes(keyCode)) {
             event.preventDefault();
-            let textarea = document.querySelector('textarea');
-            let desc = button.getAttribute('desc');
-            textarea.setRangeText(keyboard.buttonsList[desc].value, textarea.selectionStart, textarea.selectionEnd, 'end');
         }
+
+        printCharacter(event);
 
         focusOnTextarea();
     }
@@ -87,6 +86,7 @@ window.addEventListener('keyup', (event) => {
 
 let keyboardLayout = document.querySelector('.keyboard');
 let mousedownTimeout;
+let printingTimeout;
 let printingInterval;
 
 keyboardLayout.addEventListener('mouseover', (event) => {
@@ -118,6 +118,9 @@ keyboardLayout.addEventListener('click', (event) => {
 
         focusOnTextarea();
 
+        let shiftLeft = document.querySelector('.shiftleft');
+        let shiftRight = document.querySelector('.shiftright');
+
         if (event.target.getAttribute('keycode') == '20') {
             if (!event.target.hasAttribute('active')) {
                 event.target.setAttribute('active', '');
@@ -136,15 +139,12 @@ keyboardLayout.addEventListener('click', (event) => {
             } else {
                 event.target.removeAttribute('active');
                 event.target.classList.remove('pressed');
-                let shiftLeft = document.querySelector('.shiftleft');
-                let shiftRight = document.querySelector('.shiftright');
                 if (!shiftLeft.hasAttribute('active') && !shiftRight.hasAttribute('active')) {
                     changeLayoutToDefault();
                 }
             }
         } else {
             if (event.target.getAttribute('keycode') == '18') {
-                let shiftLeft = document.querySelector('.shiftleft');
                 if (shiftLeft.hasAttribute('active')) {
                     shiftLeft.removeAttribute('active');
                     shiftLeft.classList.remove('pressed');
@@ -158,6 +158,14 @@ keyboardLayout.addEventListener('click', (event) => {
                 printCharacter(event);
             }
 
+            if (shiftLeft.hasAttribute('active')) {
+                shiftLeft.removeAttribute('active');
+                shiftLeft.classList.remove('pressed');
+                if (!shiftLeft.hasAttribute('active') && !shiftRight.hasAttribute('active')) {
+                    changeLayoutToDefault();
+                }
+            }
+
             event.target.classList.add('pressed');
             setTimeout(() => { event.target.classList.remove('pressed'); }, 50);
         }
@@ -169,15 +177,17 @@ keyboardLayout.addEventListener('mousedown', (event) => {
     mousedownTimeout = setTimeout(() => {
         let keyCode = event.target.getAttribute('keycode');
         if (keyboard.buttonsUsed.includes(keyCode)) {
-            printingInterval = setInterval(() => {
-                if (event.target.getAttribute('keycode') == '8' || event.target.getAttribute('keycode') == '46') {
-                    deleteCharacter(event);
-                } else if (event.target.getAttribute('keycode') == '37' || event.target.getAttribute('keycode') == '38' || event.target.getAttribute('keycode') == '39' || event.target.getAttribute('keycode') == '40') {
-                    moveCaret(event);
-                } else {
-                    printCharacter(event);
-                }
-            }, 50);
+            printingTimeout = setTimeout(() => {
+                printingInterval = setInterval(() => {
+                    if (event.target.getAttribute('keycode') == '8' || event.target.getAttribute('keycode') == '46') {
+                        deleteCharacter(event);
+                    } else if (event.target.getAttribute('keycode') == '37' || event.target.getAttribute('keycode') == '38' || event.target.getAttribute('keycode') == '39' || event.target.getAttribute('keycode') == '40') {
+                        moveCaret(event);
+                    } else {
+                        printCharacter(event);
+                    }
+                }, 50);
+            }, 400);
 
             focusOnTextarea();
 
@@ -194,6 +204,8 @@ keyboardLayout.addEventListener('mouseup', (event) => {
         }
 
         clearTimeout(mousedownTimeout);
+
+        clearTimeout(printingTimeout);
 
         clearInterval(printingInterval);
 

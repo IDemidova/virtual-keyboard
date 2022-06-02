@@ -179,17 +179,32 @@ function focusOnTextarea() {
 }
 
 function printCharacter(event) {
-    let character = event.target.classList.contains('character');
-    let control = event.target.classList.contains('control');
-    let printable = event.target.classList.contains('printable');
     let textarea = document.querySelector('textarea');
+    let virtualButton;
+    let character;
+    let control;
+    let printable;
+    let desc;
+
+    if (event.type == 'click' || event.type == 'mousedown') {
+        virtualButton = event.target;
+        character = virtualButton.classList.contains('character');
+        control = virtualButton.classList.contains('control');
+        printable = virtualButton.classList.contains('printable');
+        desc = virtualButton.getAttribute('desc');
+    } else if (event.type == 'keydown') {
+        virtualButton = document.querySelector(`button[keycode="${event.keyCode}"]`);
+        character = virtualButton.classList.contains('character');
+        control = virtualButton.classList.contains('control');
+        printable = virtualButton.classList.contains('printable');
+        desc = virtualButton.getAttribute('desc');
+    }
 
     if (character) {
-        textarea.setRangeText(event.target.textContent, textarea.selectionStart, textarea.selectionEnd, 'end');
+        textarea.setRangeText(virtualButton.textContent, textarea.selectionStart, textarea.selectionEnd, 'end');
     }
 
     if (control && printable) {
-        let desc = event.target.getAttribute('desc');
         textarea.setRangeText(keyboard.buttonsList[desc].value, textarea.selectionStart, textarea.selectionEnd, 'end');
     }
 }
